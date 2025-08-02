@@ -1,0 +1,55 @@
+<mat-card class="mb-25 tagus-card">
+  <mat-card-header>
+    <h5 class="mb-0">Recent Orders</h5>
+    <!-- <button type="button" mat-button class="position-relative btn bg-transparent border-none" [matMenuTriggerFor]="monthMenu">
+      Last 5 Orders
+    </button>
+    <mat-menu #monthMenu="matMenu" class="monthMenu" xPosition="before">
+      <button mat-menu-item type="button" class="bg-transparent border-none">Today</button>
+      <button mat-menu-item type="button" class="bg-transparent border-none">Last Month</button>
+      <button mat-menu-item type="button" class="bg-transparent border-none">Last Year</button>
+      <button mat-menu-item type="button" class="bg-transparent border-none">All Time</button>
+    </mat-menu> -->
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mat-elevation-z8 recentOrdersTable tagus-mat-table">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Order ID -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef class="text-start">Order ID</th>
+          <td mat-cell *matCellDef="let element" class="fw-semibold text-start">{{element.position}}</td>
+        </ng-container>
+
+        <!-- Product -->
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef class="text-start">Order Number</th>
+          <td mat-cell *matCellDef="let element" class="text-start">
+            <a routerLink="/ecommerce/product-details" class="d-flex align-items-center product-info">
+              {{element.product.productName}}
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Date -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="badge" *ngIf="element.status.pending">{{element.status.pending}}</span>
+            <span class="badge outOfStock" *ngIf="element.status.outOfStock">{{element.status.outOfStock}}</span>
+            <span class="badge delivered" *ngIf="element.status.delivered">{{element.status.delivered}}</span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

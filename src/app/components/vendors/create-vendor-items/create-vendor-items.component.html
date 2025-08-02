@@ -1,0 +1,236 @@
+<div
+    class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-space-between"
+>
+    <h5 class="mb-0">Create Product</h5>
+    <ol class="breadcrumb mb-0 ps-0">
+        <li class="breadcrumb-item">
+            <a routerLink="/"> <i class="ri-home-8-line"></i> Dashboard </a>
+        </li>
+        <li class="breadcrumb-item gray-color">Products</li>
+        <li class="breadcrumb-item fw-semibold">Create Product</li>
+    </ol>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-md-12">
+        <mat-card class="mb-25 create-project-card tagus-card">
+            <mat-card-header class="border-bottom">
+                <h5 class="mb-0">Create Product</h5>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <!-- Product Title -->
+                        <div class="col-lg-12">
+                            <label>Product Title</label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter product title</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="name"
+                                    required
+                                />
+                            </mat-form-field>
+                        </div>
+
+                        <!-- SKU -->
+                        <div class="col-lg-6">
+                            <label>SKU</label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter SKU</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="sku"
+                                    required
+                                />
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="col-lg-6">
+                            <label>Category</label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Category</mat-label>
+                                <mat-select
+                                    formControlName="itemCategoryId"
+                                    required
+                                >
+                                    <mat-option
+                                        *ngFor="let cat of categories"
+                                        [value]="cat.id"
+                                    >
+                                        {{ cat.name }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- User Type ID -->
+                        <div class="col-lg-6">
+                            <label>User Type</label>
+                            <mat-form-field appearance="fill">
+                                <mat-label
+                                    >Select User Type (Admin or
+                                    Vendor)</mat-label
+                                >
+                                <mat-select
+                                    formControlName="userTypeId"
+                                    required
+                                >
+                                    <mat-option
+                                        *ngFor="let type of userTypes"
+                                        [value]="type.id"
+                                    >
+                                        {{ type.name }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- User ID -->
+                        <div class="col-lg-6">
+                            <label>User ID</label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter User ID</mat-label>
+                                <input
+                                    matInput
+                                    type="number"
+                                    formControlName="userId"
+                                    required
+                                />
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Variants -->
+<div class="col-lg-12" formArrayName="itemVariants">
+  <label>Variants</label>
+  <div *ngFor="let variant of itemVariants.controls; let i = index" [formGroupName]="i" class="mb-3">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Color</mat-label>
+          <input matInput formControlName="color" required>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Size</mat-label>
+          <input matInput formControlName="size" required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Additional Price</mat-label>
+          <input matInput type="number" formControlName="priceAdditional" required>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-2 d-flex align-items-center">
+        <button mat-icon-button color="warn" (click)="removeVariant(i)" *ngIf="itemVariants.length > 1">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button mat-stroked-button type="button" (click)="addVariant()">
+    + Add Variant
+  </button>
+</div>
+
+                        <!-- Product Description -->
+                        <div class="col-lg-12">
+                            <label>Product Description</label>
+                            <div class="NgxEditor__Wrapper mb-20">
+                                <ngx-editor-menu
+                                    [editor]="editor"
+                                    [toolbar]="toolbar"
+                                ></ngx-editor-menu>
+                                <ngx-editor
+                                    [editor]="editor"
+                                    formControlName="description"
+                                    placeholder="Enter description"
+                                ></ngx-editor>
+                            </div>
+                        </div>
+
+                        <!-- Product Image Upload -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
+                            <label class="d-block mb-12 fw-semibold gray-color"
+                                >Product Image</label
+                            >
+                            <input
+                                type="file"
+                                accept="image/*"
+                                (change)="onSingleFileSelected($event)"
+                                class="form-control"
+                                required
+                            />
+                            <div
+                                *ngIf="singleImagePreview"
+                                class="image-preview mt-2"
+                            >
+                                <img
+                                    [src]="singleImagePreview"
+                                    alt="Product Image Preview"
+                                    style="max-width: 200px; max-height: 200px"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Product Gallery Upload -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 mt-3">
+                            <label class="d-block mb-12 fw-semibold gray-color"
+                                >Product Gallery</label
+                            >
+                            <input
+                                type="file"
+                                accept="image/*"
+                                multiple
+                                (change)="onMultipleFilesSelected($event)"
+                                class="form-control"
+                            />
+                            <div
+                                *ngIf="galleryImagePreviews.length"
+                                class="gallery-preview mt-2"
+                            >
+                                <div
+                                    *ngFor="let preview of galleryImagePreviews"
+                                    class="image-preview"
+                                >
+                                    <img
+                                        [src]="preview"
+                                        alt="Gallery Image Preview"
+                                        style="
+                                            max-width: 100px;
+                                            max-height: 100px;
+                                            margin-right: 10px;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        type="submit"
+                        class="default-btn mt-25"
+                        [disabled]="
+                            productForm.invalid ||
+                            !selectedSingleFile ||
+                            submitting
+                        "
+                    >
+                        {{ submitting ? "Creating..." : "Create Product" }}
+                        <mat-spinner
+                            *ngIf="submitting"
+                            diameter="20"
+                        ></mat-spinner>
+                    </button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

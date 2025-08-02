@@ -1,0 +1,294 @@
+.container {
+  padding: 20px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  &.order-header {
+    background: #e0f7fa;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h5 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .status {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  &.delivery-estimate {
+    background: #fce4ec;
+    padding: 15px;
+    text-align: center;
+
+    h6 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .estimate-details {
+      span {
+        font-size: 24px;
+        font-weight: 600;
+        color: #c2185b;
+      }
+
+      p {
+        margin: 5px 0 0;
+        color: #666;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &.order-progress {
+    padding: 15px;
+
+    h6 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .progress-timeline {
+      .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 10px;
+          height: 100%;
+          width: 2px;
+          background: #eee;
+        }
+
+        &:last-child:before {
+          height: 0;
+        }
+
+        i {
+          width: 20px;
+          height: 20px;
+          background: #ddd;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          margin-right: 10px;
+          z-index: 1;
+        }
+
+        &.completed i {
+          background: #4caf50;
+        }
+
+        &.active i {
+          background: #2196f3;
+        }
+
+        &.pending i {
+          background: #ccc;
+        }
+
+        .timeline-content {
+          h6 {
+            margin: 0 0 5px;
+            font-size: 14px;
+            color: #333;
+          }
+
+          p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  &.card-row {
+    display: flex;
+    gap: 20px;
+
+    .card {
+      flex: 1;
+    }
+  }
+
+  &.shipping-info, &.tracking-info {
+    padding: 15px;
+
+    h6 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+      color: #666;
+
+      strong {
+        color: #333;
+      }
+    }
+
+    .track-btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background: #ab47bc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 10px;
+
+      &:hover {
+        background: #8e24aa;
+      }
+    }
+  }
+
+  &.order-summary {
+    padding: 15px;
+
+    h6 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      margin-bottom: 10px;
+
+      .product-info {
+        display: flex;
+        align-items: center;
+
+        .product-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          margin-right: 10px;
+          background: #e0e0e0;
+        }
+
+        .product-details {
+          h6 {
+            margin: 0 0 5px;
+            font-size: 14px;
+            color: #333;
+          }
+
+          p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .price {
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .summary-details {
+      list-style: none;
+      padding: 0;
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        span {
+          font-size: 14px;
+          color: #666;
+        }
+
+        &.total {
+          font-weight: 600;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  &.need-help {
+    background: #e0f7fa;
+    padding: 15px;
+    text-align: center;
+
+    h6 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 15px;
+      color: #666;
+    }
+
+    .help-buttons {
+      button {
+        padding: 8px 20px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &.live-chat-btn {
+          background: #2196f3;
+          color: #fff;
+
+          &:hover {
+            background: #1976d2;
+          }
+        }
+
+        &.email-support-btn {
+          background: #ab47bc;
+          color: #fff;
+
+          &:hover {
+            background: #8e24aa;
+          }
+        }
+      }
+    }
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+}

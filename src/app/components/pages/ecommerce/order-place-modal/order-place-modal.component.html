@@ -1,0 +1,14 @@
+<div class="modal-overlay" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Thank You!</h2>
+    </div>
+    <div class="modal-body">
+      <p>Your order has been placed successfully!</p>
+      <p>We appreciate your purchase. You'll receive a confirmation email soon.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>

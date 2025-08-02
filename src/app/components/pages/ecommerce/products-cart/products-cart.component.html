@@ -1,0 +1,111 @@
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-space-between">
+  <h5 class="mb-0">Cart</h5>
+  <ol class="breadcrumb mb-0 ps-0">
+    <li class="breadcrumb-item">
+      <a routerLink="/">
+        <i class="ri-home-8-line"></i>
+        Dashboard
+      </a>
+    </li>
+    <li class="breadcrumb-item fw-semibold">Products</li>
+    <li class="breadcrumb-item fw-semibold">Cart</li>
+  </ol>
+</div>
+
+<div class="row justify-content-center"
+  [class.component-dark-theme]="themeService.isDark()"
+  [class.component-rtl-enabled]="themeService.isRTLEnabled()">
+  <div class="col-lg-7 col-xl-8 col-md-12">
+    <mat-card class="mb-25 tagus-card">
+      <mat-card-header>
+        <h5 class="mb-0">Shopping Cart</h5>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="fw-semibold gray-color text-start">Product</th>
+                <th class="fw-semibold gray-color">Price</th>
+                <th class="fw-semibold gray-color">Size</th>
+                <th class="fw-semibold gray-color">Quantity</th>
+                <th class="fw-semibold gray-color">Total</th>
+                <th class="fw-semibold gray-color">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td class="text-start">
+                  <a routerLink="/" class="d-flex align-items-center product-info">
+                    <img [src]="item.image || 'assets/img/placeholder.png'"
+                         class="border-radius me-12"
+                         width="50" alt="product">
+                    <div class="title">
+                      <h5 class="fw-semibold mb-5">{{ item.name }}</h5>
+                      <span class="d-block muted-color fw-medium">
+                        Color: <span class="gray-color">{{ item.color || '-' }}</span>
+                      </span>
+                    </div>
+                  </a>
+                </td>
+                <td class="gray-color">RS {{ item.price }}</td>
+                <td class="gray-color">{{ item.size || '-' }}</td>
+                <td class="gray-color">{{ item.quantity }}</td>
+                <td class="gray-color">RS {{ item.price * item.quantity }}</td>
+                <td class="gray-color">
+                  <a href="#" class="action-btn" (click)="removeItem(item.itemId); $event.preventDefault()">
+                    <i class="ri-delete-bin-7-line"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr *ngIf="cartItems.length === 0">
+                <td colspan="6" class="text-center gray-color">Your cart is empty.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <form class="mt-25 note-box">
+          <div class="text-end">
+            <button mat-button type="button" class="default-btn"
+              (click)="goToCheckout()" [disabled]="cartItems.length === 0">
+              Checkout
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-lg-5 col-xl-4 col-md-12">
+    <mat-card class="mb-25 tagus-card">
+      <mat-card-header>
+        <h5 class="mb-0">Order Summary</h5>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="list ps-0 mb-0 mt-25">
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Sub Total :
+            <span class="fw-semibold">RS {{ getTotal() }}</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Discount :
+            <span class="fw-semibold">RS 0.00</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Shipping Charge :
+            <span class="fw-semibold">RS 50.00</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Estimated Tax :
+            <span class="fw-semibold">RS 0.00</span>
+          </li>
+          <li class="fw-semibold d-flex align-items-center justify-content-space-between">
+            Total :
+            <span class="fw-semibold">RS {{ getTotal() + 50 }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

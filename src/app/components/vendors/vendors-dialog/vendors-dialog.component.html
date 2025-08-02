@@ -1,0 +1,128 @@
+<div class="create-dialog-box scrollable-dialog">
+  <div class="title d-flex align-items-center justify-content-space-between">
+    <h4 class="mb-0">Create Vendor</h4>
+    <button class="close-btn bg-transparent p-0 border-none" (click)="close()">
+      <i class="flaticon-close"></i>
+    </button>
+  </div>
+
+  <form (ngSubmit)="submit()" #userForm="ngForm">
+    <div class="row">
+      <!-- Username -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Username <span class="text-danger">*</span></label>
+          <input type="text" class="input-control" [(ngModel)]="vendorObj.username" name="username" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.username }" />
+          <div *ngIf="formSubmitted && !vendorObj.username" class="text-danger">
+            Username is required
+          </div>
+        </div>
+      </div>
+
+      <!-- First Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>First Name <span class="text-danger">*</span></label>
+          <input type="text" class="input-control" [(ngModel)]="vendorObj.firstName" name="firstName" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.firstName }" />
+          <div *ngIf="formSubmitted && !vendorObj.firstName" class="text-danger">
+            First Name is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Last Name <span class="text-danger">*</span></label>
+          <input type="text" class="input-control" [(ngModel)]="vendorObj.lastName" name="lastName" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.lastName }" />
+          <div *ngIf="formSubmitted && !vendorObj.lastName" class="text-danger">
+            Last Name is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Email <span class="text-danger">*</span></label>
+          <input type="email" class="input-control" [(ngModel)]="vendorObj.email" name="email" required
+            [ngClass]="{ 'is-invalid': formSubmitted && userForm.controls['email']?.invalid }" />
+          <div *ngIf="formSubmitted && userForm.controls['email']?.invalid" class="text-danger">
+            Valid Email is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Mobile Number <span class="text-danger">*</span></label>
+          <input type="tel" class="input-control" [(ngModel)]="vendorObj.mobileNo" name="mobileNo" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.mobileNo }" />
+          <div *ngIf="formSubmitted && !vendorObj.mobileNo" class="text-danger">
+            Mobile Number is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Employee ID</label>
+          <input type="text" class="input-control" [(ngModel)]="vendorObj.employeeId" name="employeeId" />
+        </div>
+      </div>
+
+      <!-- Company ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Company ID</label>
+          <input type="number" class="input-control" [(ngModel)]="vendorObj.companyId" name="companyId" />
+        </div>
+      </div>
+
+      <!-- User Type Dropdown -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>User Type <span class="text-danger">*</span></label>
+          <select class="input-control" [(ngModel)]="vendorObj.userType" name="userType" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.userType }">
+            <option value="">Select User Type</option>
+            <option *ngFor="let type of userTypes" [value]="type">{{ type }}</option>
+          </select>
+          <div *ngIf="formSubmitted && !vendorObj.userType" class="text-danger">
+            User Type is required
+          </div>
+        </div>
+      </div>
+
+      <!-- User Role ID Dropdown (ID Only) -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>User Role ID <span class="text-danger">*</span></label>
+          <select class="input-control" [(ngModel)]="vendorObj.userRoleId" name="userRoleId" required
+            [ngClass]="{ 'is-invalid': formSubmitted && !vendorObj.userRoleId }">
+            <option value="">Select User Role</option>
+            <option *ngFor="let role of userRoles" [value]="role.id">{{ role.id }}</option>
+          </select>
+          <div *ngIf="formSubmitted && !vendorObj.userRoleId" class="text-danger">
+            User Role ID is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="text-end mt-3">
+      <button type="button" class="gray" (click)="close()">
+        <i class="ri-close-fill"></i> Cancel
+      </button>
+      <button type="submit">
+        <i class="ri-add-fill"></i> Create Vendor
+      </button>
+    </div>
+  </form>
+</div>

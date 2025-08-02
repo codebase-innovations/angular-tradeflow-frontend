@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-xxl-4">
+        <app-ecommerce-stats
+            [totalSales]="orderSummary?.totalSalesOrders ?? 0"
+            [totalOrders]="orderSummary?.totalCompletedOrders ?? 0"
+            [pendingOrders]="orderSummary?.totalPendingOrders ?? 0"
+        >
+        </app-ecommerce-stats>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <app-audience-overview
+                    [weeklySalesData]="orderSummary?.weeklySalesDTOS || []"
+                    [monthlySalesData]="orderSummary?.monthlySalesDTOS || []"
+                >
+                </app-audience-overview>
+            </div>
+            <div class="col-lg-4">
+                <app-live-visits-on-our-site></app-live-visits-on-our-site>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-lg-8">
+                <app-visits-by-day></app-visits-by-day>
+            </div>
+            <div class="col-lg-4">
+                <app-ecommerce-impressions></app-ecommerce-impressions>
+
+                <app-ecommerce-activity-timeline></app-ecommerce-activity-timeline>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-8">
+                <app-recent-orders
+                    [orders]="orderSummary?.recentOrders || []"
+                ></app-recent-orders>
+                <!-- <app-ecommerce-ratings></app-ecommerce-ratings> -->
+            </div>
+            <div class="col-lg-4">
+                <app-best-selling-products
+                    [products]="orderSummary?.topSellingItems || []"
+                ></app-best-selling-products>
+                <!-- <app-sales-by-locations></app-sales-by-locations> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- <app-revenue-status></app-revenue-status> -->
+                <app-team-members-list></app-team-members-list>
+            </div>
+            <div class="col-lg-4">
+                <app-new-customers></app-new-customers>
+            </div>
+        </div>
+    </div>
+</div>

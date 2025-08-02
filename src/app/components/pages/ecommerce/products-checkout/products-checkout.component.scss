@@ -1,0 +1,209 @@
+.checkout-container {
+  padding: 20px;
+  background: #f9f5ff;
+
+  .tagus-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+
+    mat-card-header {
+      background: #f8f9fa;
+      border-radius: 10px 10px 0 0;
+      padding: 15px 20px;
+
+      h5 {
+        margin: 0;
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+
+    mat-card-content {
+      padding: 20px;
+
+      .note-box {
+        .row {
+          margin: -10px;
+
+          .col-lg-6,
+          .col-lg-12,
+          .col-lg-4 {
+            padding: 10px;
+
+            mat-form-field {
+              width: 100%;
+
+              .mat-form-field-wrapper {
+                padding: 0;
+
+                .mat-form-field-flex {
+                  border: 1px solid #ddd;
+                  border-radius: 5px;
+                  padding: 10px;
+                  background: #eef2f7;
+
+                  .mat-form-field-prefix {
+                    margin-right: 10px;
+                    color: #666;
+                  }
+
+                  input {
+                    border: none;
+                    width: 100%;
+                    font-size: 14px;
+                    background: transparent;
+                    color: #333;
+                  }
+                }
+
+                .mat-form-field-appearance-fill .mat-form-field-flex {
+                  background-color: #eef2f7;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .payment-information {
+        p {
+          font-size: 12px;
+          color: #666;
+          margin-top: 10px;
+          text-align: center;
+        }
+
+        .default-btn {
+          background: #5a4bcb;
+          color: #fff;
+          border-radius: 5px;
+          padding: 12px;
+          font-size: 16px;
+          margin-top: 15px;
+          border: none;
+          cursor: pointer;
+
+          &:hover {
+            background: #4a3cb0;
+          }
+
+          &:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      .order-summary {
+        .table-responsive {
+          .table {
+            margin-bottom: 0;
+
+            tbody {
+              tr {
+                td {
+                  vertical-align: middle;
+                  padding: 10px 15px;
+
+                  .product-info {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                      border-radius: 5px;
+                      width: 50px;
+                      height: 50px;
+                      object-fit: cover;
+                    }
+
+                    .title {
+                      margin-left: 12px;
+
+                      h5 {
+                        font-size: 16px;
+                        color: #333;
+                        margin: 0;
+                      }
+
+                      span {
+                        font-size: 12px;
+                        color: #666;
+                      }
+                    }
+                  }
+
+                  &.gray-color {
+                    color: #666;
+                    font-weight: 500;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .list {
+          li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+
+            &.fw-semibold {
+              font-weight: 500;
+              color: #333;
+              margin-top: 15px;
+              border-top: 1px solid #eee;
+              padding-top: 10px;
+
+              span {
+                color: #333;
+              }
+            }
+
+            .text-success {
+              color: #28a745;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.gray-color {
+  color: #666;
+}
+
+.fw-semibold {
+  font-weight: 500;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.mb-25 {
+  margin-bottom: 25px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.text-muted {
+  color: #666;
+}

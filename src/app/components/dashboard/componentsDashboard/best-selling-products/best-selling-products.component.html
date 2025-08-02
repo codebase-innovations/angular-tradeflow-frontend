@@ -1,0 +1,38 @@
+<mat-card class="mb-25 tagus-card" [class.component-dark-theme]="themeService.isDark()"
+    [class.component-rtl-enabled]="themeService.isRTLEnabled()">
+    <mat-card-header>
+        <h5 class="mb-0">Best Selling Products</h5>
+        <!-- <button type="button" mat-button class="position-relative btn bg-transparent border-none">
+            Top 5 Best Selling
+        </button>
+        <mat-menu #monthMenu="matMenu" class="monthMenu" xPosition="before">
+             <button mat-menu-item type="button" class="bg-transparent border-none">Today</button>
+            <button mat-menu-item type="button" class="bg-transparent border-none">Last Month</button>
+            <button mat-menu-item type="button" class="bg-transparent border-none">Last Year</button>
+            <button mat-menu-item type="button" class="bg-transparent border-none">All Time</button> 
+        </mat-menu>  -->
+    </mat-card-header>
+    <mat-card-content>
+        <div class="best-selling-products-table table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>
+                            <a class="d-flex align-items-center product-info">
+                                <!-- <img [src]="products.imageUrl" alt="product" /> -->
+                                <div class="title">
+                                    <span>{{ product.itemName }}</span>
+                                    ID: {{ product.itemId }}
+                                </div>
+                            </a>
+                        </td>
+                        <td class="gray-color">PKR {{ product.totalPriceSold }}</td>
+                        <td class="stock-number">{{ product.totalQuantitySold }}</td>
+                        <td class="stock fw-semibold main-color">Stock</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </mat-card-content>
+</mat-card>

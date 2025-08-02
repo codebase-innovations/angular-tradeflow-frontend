@@ -1,0 +1,100 @@
+<mat-card
+  class="mb-25 tagus-card"
+  [class.component-dark-theme]="themeService.isDark()"
+  [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+>
+  <mat-card-header>
+    <h5 class="mb-0">Supplier List</h5>
+    <button
+      mat-flat-button
+      class="default-btn tagus"
+      (click)="openCreateSuppliersDialog('300ms', '100ms')"
+    >
+      <i class="ri-add-fill"></i> Create Suppliers
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="fw-semibold main-color">UserName</th>
+            <th class="fw-semibold gray-color">Name</th>
+            <th class="fw-semibold gray-color">UserType</th>
+            <th class="fw-semibold gray-color">Phone</th>
+            <th class="fw-semibold gray-color">Email</th>
+            <th class="fw-semibold gray-color">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let supplier of suppliers">
+            <td>
+              <div class="user-info d-flex align-items-center">
+                <mat-checkbox class="fm-checkbox"></mat-checkbox>
+                <div class="title">
+                  <h5 class="fw-semibold mb-5">{{ supplier.username }}</h5>
+                </div>
+              </div>
+            </td>
+            <td class="gray-color">
+              <div class="title">
+                <h5 class="fw-semibold mb-5">{{ supplier.firstName }} {{ supplier.lastName }}</h5>
+              </div>
+            </td>
+            <td class="gray-color">
+              <div class="title">
+                <h5 class="fw-semibold mb-5">{{ supplier.userType.name }}</h5> <!-- Changed to supplier.userType.name -->
+              </div>
+            </td>
+            <td class="gray-color">{{ supplier.mobileNo }}</td>
+            <td class="gray-color">
+              <a [href]="'mailto:' + supplier.email" class="gray-color">
+                {{ supplier.email }}
+              </a>
+            </td>
+            <td>
+              <button
+                type="button"
+                mat-button
+                class="position-relative dot-btn p-0 bg-transparent border-none"
+                [matMenuTriggerFor]="actionMenu"
+              >
+                <i class="ri-more-fill"></i>
+              </button>
+              <mat-menu #actionMenu="matMenu" class="dotMenu two monthMenu" xPosition="before">
+                <button mat-menu-item type="button" class="bg-transparent border-none position-relative">
+                  <i class="ri-share-line"></i> Share
+                </button>
+                <button mat-menu-item type="button" class="bg-transparent border-none position-relative">
+                  <i class="ri-link"></i> Get Sharable Link
+                </button>
+                <button mat-menu-item type="button" class="bg-transparent border-none position-relative">
+                  <i class="ri-edit-line"></i> Rename
+                </button>
+                <button
+                  mat-menu-item
+                  type="button"
+                  class="bg-transparent border-none position-relative"
+                  (click)="openEditSupplierDialog(supplier, '300ms', '100ms')"
+                >
+                  <i class="ri-edit-line"></i> Edit
+                </button>
+                <button
+                  mat-menu-item
+                  type="button"
+                  class="bg-transparent border-none position-relative"
+                  (click)="openViewSupplierDialog(supplier, '300ms', '100ms')"
+                >
+                  <i class="ri-eye-line"></i> View
+                </button>
+                <button mat-menu-item type="button" class="bg-transparent border-none position-relative">
+                  <i class="ri-delete-bin-line"></i> Remove
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

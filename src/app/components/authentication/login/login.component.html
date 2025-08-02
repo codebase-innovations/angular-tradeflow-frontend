@@ -1,0 +1,73 @@
+<div
+    class="h-100vh pt-50 pb-50"
+    [class.component-dark-theme]="themeService.isDark()"
+    [class.card-borderd-theme]="themeService.isCardBorder()"
+    [class.card-border-radius]="themeService.isCardBorderRadius()"
+    [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+>
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="tagus-form ms-auto me-auto">
+                <div class="title">
+                    <div class="d-flex mb-10 align-items-center">
+                        <h2 class="mb-0 me-30">Get Started</h2>
+                        <img src="assets/img/logo-icon.png" alt="logo-icon">
+                    </div>
+                    <p>Don’t have an account? 
+                        <a routerLink="/authentication/register" class="main-color fw-medium">
+                            Register now!
+                        </a>
+                    </p>
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="OnLogin()">
+                    <div class="bg-white border-radius pt-20 ps-20 pe-20">
+                        <!-- Username Field -->
+                        <div class="tagus-form-group without-icon">
+                            <label class="d-block mb-12 fw-semibold gray-color">
+                                Username <span>*</span>
+                            </label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your username</mat-label>
+                                <input matInput [(ngModel)]="loginObj.UserName" name="UserName" required type="text" #userName="ngModel">
+                                <mat-error *ngIf="userName.errors?.['required'] && userName.touched">
+                                    Username is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="tagus-form-group without-icon">
+                            <label class="d-block mb-12 fw-semibold gray-color">
+                                Password <span>*</span>
+                            </label>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="loginObj.Password" name="Password" required minlength="4" #password="ngModel">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="password.errors?.['required'] && password.touched">
+                                    Password is required
+                                </mat-error>
+                                <mat-error *ngIf="password.errors?.['minlength'] && password.touched">
+                                    Password must be at least 4 characters
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="d-flex info align-items-center justify-content-space-between">
+                        <mat-checkbox class="gray-color">Remember me</mat-checkbox>
+                        <a routerLink="/authentication/forgot-password" class="d-inline-block main-color fw-medium">
+                            Forgot your password?
+                        </a>
+                    </div>
+
+                    <button type="submit" mat-flat-button class="tagus d-block fw-semibold">
+                        Log In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

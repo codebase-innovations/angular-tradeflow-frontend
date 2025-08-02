@@ -1,0 +1,162 @@
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-space-between">
+  <h5 class="mb-0">Product Details</h5>
+  <ol class="breadcrumb mb-0 ps-0">
+    <li class="breadcrumb-item">
+      <a routerLink="/">
+        <i class="ri-home-8-line"></i>
+        Dashboard
+      </a>
+    </li>
+    <li class="breadcrumb-item fw-semibold">eCommerce</li>
+    <li class="breadcrumb-item fw-semibold">Product Details</li>
+  </ol>
+</div>
+
+<mat-card
+  class="mb-25 tagus-card"
+  [class.component-dark-theme]="themeService.isDark()"
+  [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+>
+  <mat-card-content>
+    <div *ngIf="isLoading" class="text-center">
+      <p>Loading...</p>
+    </div>
+    <div *ngIf="error" class="text-danger text-center">
+      <p>{{ error }}</p>
+    </div>
+    <div *ngIf="itemDetails && !isLoading && !error" class="row align-items-center">
+      <div class="col-lg-5 col-md-12">
+        <div class="product-image border-radius">
+          <owl-carousel-o [options]="imageSlides">
+            <ng-container *ngFor="let image of itemImages">
+              <ng-template carouselSlide>
+                <img [src]="getImageUrl(image.imagePath)" alt="product-image" class="border-radius">
+              </ng-template>
+            </ng-container>
+            <!-- Fallback if no images are available -->
+            <ng-container *ngIf="itemImages.length === 0">
+              <ng-template carouselSlide>
+                <img src="assets/img/recent-orders/product-details1.jpg" alt="product-details" class="border-radius">
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-12">
+        <div class="product-content">
+          <h4>{{ itemDetails.name }}</h4>
+          <div [innerHTML]="itemDetails.description"></div>
+          <ul class="list ps-0">
+            <li>
+              <span class="fw-semibold">Vendor :</span>
+              {{ itemDetails.tradeFlowUser?.firstName }} {{ itemDetails.tradeFlowUser?.lastName }}
+            </li>
+            <li>
+              <span class="fw-semibold">Category :</span>
+              {{ itemDetails.itemCategory?.name }}
+            </li>
+            <li>
+              <span class="fw-semibold">SKU :</span>
+              {{ itemDetails.sku }}
+            </li>
+            <li>
+              <span class="fw-semibold">Availability :</span>
+              {{ itemDetails.isActive ? 'In Stock' : 'Out of Stock' }}
+            </li>
+            <li *ngIf="itemDetails.itemVariants && itemDetails.itemVariants.length > 0">
+              <span class="fw-semibold">Variants :</span>
+              <ul>
+                <li *ngFor="let variant of itemDetails.itemVariants">
+                  Color: {{ variant.color }} Size: ({{ variant.size }}) Price: ${{ variant.priceAdditional }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="social-links d-flex align-items-center">
+            <li>
+              <span class="fw-semibold">Share :</span>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="flaticon-facebook-app-symbol"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="flaticon-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="flaticon-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <mat-tab-group class="product-tabs" mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
+      <mat-tab label="Description">
+        <div [innerHTML]="itemDetails?.description"></div>
+      </mat-tab>
+      <mat-tab label="Reviews (3)">
+        <div class="row reviews">
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="review-card mb-25">
+              <div class="content border-radius">
+                <div class="rating">
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                </div>
+                <p class="fw-medium">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit.</p>
+              </div>
+              <div class="ms-25 d-flex align-items-center">
+                <img src="assets/img/user/user22.jpg" class="rounded-circle me-10" width="30" alt="user">
+                <h5 class="mb-0 fw-semibold">Alvarado Turner</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="review-card mb-25">
+              <div class="content border-radius">
+                <div class="rating">
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star"></i>
+                </div>
+                <p class="fw-medium">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit.</p>
+              </div>
+              <div class="ms-25 d-flex align-items-center">
+                <img src="assets/img/user/user21.jpg" class="rounded-circle me-10" width="30" alt="user">
+                <h5 class="mb-0 fw-semibold">Riley Dave</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-md-6">
+            <div class="review-card mb-25">
+              <div class="content border-radius">
+                <div class="rating">
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-1"></i>
+                  <i class="flaticon-star-2"></i>
+                </div>
+                <p class="fw-medium">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit.</p>
+              </div>
+              <div class="ms-25 d-flex align-items-center">
+                <img src="assets/img/user/user20.jpg" class="rounded-circle me-10" width="30" alt="user">
+                <h5 class="mb-0 fw-semibold">Ivan Dan</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

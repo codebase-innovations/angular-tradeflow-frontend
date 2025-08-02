@@ -1,0 +1,159 @@
+<div class="create-dialog-box scrollable-dialog">
+  <div class="title d-flex align-items-center justify-content-space-between">
+    <h4 class="mb-0">View Vendor Details</h4>
+    <button class="close-btn bg-transparent p-0 border-none" (click)="close()">
+      <i class="flaticon-close"></i>
+    </button>
+  </div>
+
+  <div *ngIf="vendor; else loading" class="supplier-field">
+    <div class="row">
+      <!-- ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>ID</label>
+          <input type="text" class="input-control" [value]="vendor.id" readonly />
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="input-control" [value]="vendor.username" readonly />
+        </div>
+      </div>
+
+      <!-- First Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" class="input-control" [value]="vendor.firstName" readonly />
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="input-control" [value]="vendor.lastName" readonly />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="input-control" [value]="vendor.email" readonly />
+        </div>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" class="input-control" [value]="vendor.mobileNo" readonly />
+        </div>
+      </div>
+
+      <!-- Employee ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Employee ID</label>
+          <input type="text" class="input-control" [value]="vendor.employeeId" readonly />
+        </div>
+      </div>
+
+      <!-- Company ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Company ID</label>
+          <input type="number" class="input-control" [value]="vendor.companyId" readonly />
+        </div>
+      </div>
+
+      <!-- User Type (nested) -->
+      <div class="col-12 mt-2">
+        <h5>User Type:</h5>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="form-group">
+              <label>ID</label>
+              <input type="text" class="input-control" [value]="vendor.userType?.id" readonly />
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="input-control" [value]="vendor.userType?.name" readonly />
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="form-group">
+              <label>Description</label>
+              <input type="text" class="input-control" [value]="vendor.userType?.description" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Role ID -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>User Role ID</label>
+          <input type="text" class="input-control" [value]="vendor.userRoleId" readonly />
+        </div>
+      </div>
+
+      <!-- Created By -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Created By</label>
+          <input type="text" class="input-control" [value]="vendor.createdBy" readonly />
+        </div>
+      </div>
+
+      <!-- Created On -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Created On</label>
+          <input type="text" class="input-control" [value]="vendor.createdOn" readonly />
+        </div>
+      </div>
+
+      <!-- Modified By -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Modified By</label>
+          <input type="text" class="input-control" [value]="vendor.modifiedBy" readonly />
+        </div>
+      </div>
+
+      <!-- Modified On -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Modified On</label>
+          <input type="text" class="input-control" [value]="vendor.modifiedOn" readonly />
+        </div>
+      </div>
+
+      <!-- Is Active -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Is Active</label>
+          <input type="text" class="input-control" [value]="vendor.isActive" readonly />
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end mt-3">
+      <button type="button" class="gray" (click)="close()">
+        <i class="ri-close-fill"></i> Close
+      </button>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>

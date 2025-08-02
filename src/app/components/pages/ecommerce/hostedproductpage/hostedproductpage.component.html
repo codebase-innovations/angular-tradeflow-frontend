@@ -1,0 +1,84 @@
+<div class="hosted-product-container">
+
+  <!-- Checkout Steps -->
+  <div class="checkout-steps">
+    <div class="step active">
+      <span>1</span>
+      <p>Product</p>
+    </div>
+    <div class="step">
+      <span>2</span>
+      <p>Order Summary</p>
+    </div>
+    <div class="step">
+      <span>3</span>
+      <p>Shipping Info</p>
+    </div>
+    <div class="step">
+      <span>4</span>
+      <p>Payment</p>
+    </div>
+  </div>
+
+  <mat-card class="product-card tagus-card">
+    <mat-card-content class="product-card-content">
+      <!-- Product Image Section -->
+      <div class="product-left">
+        <div class="main-image" [style.background]="getGradientBackground()">
+          <img [src]="getImageUrl(itemDetails?.itemImages?.[0]?.imagePath)" alt="Product Image">
+        </div>
+        <div class="thumbnail-list">
+          <div class="thumb" *ngFor="let image of itemDetails?.itemImages">
+            <img [src]="getImageUrl(image.imagePath)" alt="Thumb">
+          </div>
+          <div class="thumb" *ngFor="let image of itemDetails?.itemImages">
+            <img [src]="getImageUrl(image.imagePath)" alt="Thumb">
+          </div>
+          <div class="thumb" *ngFor="let image of itemDetails?.itemImages">
+            <img [src]="getImageUrl(image.imagePath)" alt="Thumb">
+          </div>
+          <div class="thumb" *ngFor="let image of itemDetails?.itemImages">
+            <img [src]="getImageUrl(image.imagePath)" alt="Thumb">
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details Section -->
+      <div class="product-right">
+        <h3>{{ itemDetails?.name }}</h3>
+        <p class="description" [innerHTML]="getSafeDescription(itemDetails?.description)"></p>
+
+        <div class="price-section">
+          <span class="price">$ {{ itemDetails?.itemVariants?.[0]?.priceAdditional }}</span>
+          <span class="old-price">$ 399.99</span>
+          <span class="discount">25% OFF</span>
+        </div>
+
+        <div class="rating">
+          ⭐⭐⭐⭐☆ <span>(4.8) 2,847 reviews</span>
+        </div>
+
+        <div class="color-options">
+          <label>Color:</label>
+          <div class="colors">
+            <button *ngFor="let variant of itemDetails?.itemVariants"
+              [style.backgroundColor]="variant.color" class="color-btn"></button>
+          </div>
+        </div>
+
+        <div class="quantity">
+          <label>Quantity:</label>
+          <div class="quantity-controls">
+            <button mat-mini-button (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+            <input type="text" [(ngModel)]="quantity" readonly>
+            <button mat-mini-button (click)="increaseQuantity()" [disabled]="quantity >= 99">+</button>
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" class="add-to-cart-btn" (click)="addToCart()">
+           <i class="ri-shopping-cart-line"></i>Add to Cart
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

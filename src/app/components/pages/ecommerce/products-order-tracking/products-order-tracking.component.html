@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="card order-header">
+    <div class="card-content">
+      <h5>Order Tracking</h5>
+      <span class="status">Order #XYZ123 - Placed on December 15, 2024</span>
+    </div>
+  </div>
+
+  <div class="card delivery-estimate">
+    <div class="card-content">
+      <h6>Estimated Delivery</h6>
+      <div class="estimate-details">
+        <span>2 days 14 hours 32 minutes</span>
+        <p>Expected: December 18, 2024 by 6:00 PM</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card order-progress">
+    <div class="card-content">
+      <h6>Order Progress</h6>
+      <div class="progress-timeline">
+        <div class="timeline-item completed">
+          <i class="ri-check-line"></i>
+          <div class="timeline-content">
+            <h6>Order Confirmed</h6>
+            <p>December 15, 2024 at 2:30 PM</p>
+          </div>
+        </div>
+        <div class="timeline-item completed">
+          <i class="ri-check-line"></i>
+          <div class="timeline-content">
+            <h6>Payment Processed</h6>
+            <p>December 15, 2024 at 3:00 PM</p>
+          </div>
+        </div>
+        <div class="timeline-item active">
+          <i class="ri-truck-line"></i>
+          <div class="timeline-content">
+            <h6>In Transit</h6>
+            <p>December 17, 2024 at 9:15 AM</p>
+          </div>
+        </div>
+        <div class="timeline-item pending">
+          <i class="ri-truck-line"></i>
+          <div class="timeline-content">
+            <h6>Delivered</h6>
+            <p>Pending</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row info-row">
+    <div class="col-12 col-md-6">
+      <div class="card shipping-info">
+        <h6>Shipping Information</h6>
+        <p><strong>Name:</strong> {{shippingInfo.name}}</p>
+        <p><strong>Phone:</strong> {{shippingInfo.phone}}</p>
+        <p><strong>email:</strong> {{shippingInfo.email}}</p>
+        <p><strong>Address:</strong> {{shippingInfo.address}}</p>
+        
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card tracking-info">
+        <h6>Tracking Details</h6>
+        <p><strong>Carrier:</strong> UPS Ground</p>
+        <p><strong>Tracking Number:</strong> 1Z999AA1234567890</p>
+        <a href="#" class="track-btn">Track with UPS</a>
+      </div>
+    </div>
+  </div>
+
+  <mat-card class="mb-25 tagus-card">
+      <mat-card-header>
+        <h5 class="mb-0">Order Summary</h5>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td class="text-start">
+                  <a routerLink="/" class="d-flex align-items-center product-info">
+                    <img [src]="item.image || 'assets/img/recent-orders/product1.jpg'" class="border-radius me-12" width="50" alt="{{ item.name }}">
+                    <div class="title">
+                      <h5 class="fw-semibold mb-5">{{ item.name }}</h5>
+                      <span class="d-block muted-color fw-medium">Color: {{ item.color || 'N/A' }}</span>
+                      <span class="d-block muted-color fw-medium">Qty: {{ item.quantity }}</span>
+                    </div>
+                  </a>
+                </td>
+                <td class="gray-color fw-semibold">Rs{{ item.price }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="list ps-0 mb-0 mt-25">
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Sub Total :
+            <span class="fw-semibold">RS {{ getTotal() }}</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Discount :
+            <span class="fw-semibold">RS 0.00</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Shipping Charge :
+            <span class="fw-semibold">RS 50.00</span>
+          </li>
+          <li class="gray-color d-flex align-items-center justify-content-space-between">
+            Estimated Tax :
+            <span class="fw-semibold">RS 0.00</span>
+          </li>
+          <li class="fw-semibold d-flex align-items-center justify-content-space-between">
+            Total :
+            <span class="fw-semibold">RS {{ getTotal() + 50 }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+  <div class="card need-help">
+    <div class="card-content">
+      <h6>Need Help?</h6>
+      <p>Have questions about your order? Our support team is here to help.</p>
+      <div class="help-buttons">
+        <button class="live-chat-btn">Live Chat</button>
+        <button class="email-support-btn">Email Support</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,237 @@
+.hosted-product-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+
+
+  .checkout-steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 0;
+    border-radius: 5px 5px 0 0; 
+
+    .step {
+      text-align: center;
+      margin: 0 20px;
+      position: relative;
+
+      span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: #ccc; 
+        border-radius: 50%;
+        line-height: 30px;
+        font-weight: 600;
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      p {
+        margin-top: 5px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background: #ccc;
+        top: 14px;
+        right: -35px;
+        z-index: -1;
+      }
+
+      &.active span {
+        background: #28a745; 
+        color: #fff;
+      }
+
+      &.active + .step::after {
+        background: #28a745; 
+      }
+    }
+  }
+
+  .product-card {
+    display: flex;
+    padding: 0;
+    box-shadow: none;
+    width: 100%;
+    border-radius: 0 0 10px 10px; 
+    background: #fff; 
+    margin-top: -10px; 
+
+    .product-card-content {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 20px; // Added padding to match the card's spacing
+    }
+
+    .product-left {
+      flex: 1 1 50%;
+      padding: 20px;
+
+      .main-image {
+        position: relative;
+        padding: 30px; 
+        background: linear-gradient(135deg, #e6e6fa, #f0f8ff);
+        border-radius: 10px;
+        overflow: hidden;
+
+        img {
+          width: 100%; // Ensures the image scales with the container
+          height: 300px; // Increased height to make the image larger, adjust as needed
+          object-fit: contain; // Maintains aspect ratio and fits within the container
+          display: block;
+          border-radius: 10px;
+        }
+      }
+
+      .thumbnail-list {
+        display: flex;
+        margin-top: 15px;
+        justify-content: center;
+
+        .thumb {
+          margin-right: 10px;
+
+          img {
+            width: 300px; // Match the main image width, adjust proportionally if needed
+            height: 300px; // Match the main image height for consistency
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.3s;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+
+    .product-right {
+      flex: 1 1 50%;
+      padding: 20px;
+
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .price-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .price {
+          font-size: 24px;
+          font-weight: 700;
+          color: #4a00e0;
+        }
+
+        .old-price {
+          margin-left: 10px;
+          text-decoration: line-through;
+          color: #999;
+        }
+
+        .discount {
+          margin-left: 10px;
+          background: #ff5252;
+          color: #fff;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+        }
+      }
+
+      .rating {
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .color-options {
+        margin-bottom: 15px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+
+        .colors {
+          display: flex;
+
+          .color-btn {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            margin-right: 8px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .quantity {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+
+        .quantity-controls {
+          display: flex;
+          align-items: center;
+
+          button {
+            min-width: 32px;
+            height: 32px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+
+          input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background: #f5f5f5;
+            margin: 0 10px;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      .add-to-cart-btn {
+        background: linear-gradient(90deg, #4a00e0, #8e2de2);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 6px;
+        padding: 10px 20px;
+        width: 100%;
+        border: none; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+      }
+    }
+  }
+}
